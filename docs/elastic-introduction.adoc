@@ -1,0 +1,24 @@
+== What is ElasticSearch?
+
+=== Once upon a time...
+
+=== What's going on?
+
+video::ZP0NmfyfsoM[youtube]
+
+== So...
+
+[source,javascript,linenums,highlight='1..2|3..4|5..6']
+--
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+console.log('Hello World!');
+--

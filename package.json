@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "feq": "node scripts/fetch-quotes.js 69",
+    "doc": "node scripts/export-doc.js README.adoc"
+  },
+  "dependencies": {
+    "@asciidoctor/reveal.js": "^5.0.0-rc.1",
+    "asciidoctor": "^2.2.6",
+    "node-fetch-commonjs": "^3.2.4"
+  }
+}

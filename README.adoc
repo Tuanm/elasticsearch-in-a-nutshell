@@ -1,0 +1,12 @@
+= ElasticSearch in a nutshell
+:author: Tuanm
+:stylesheet: asciidoctor.css
+:revealjs_theme: serif
+:source-highlighter: highlightjs
+:toc:
+
+include::docs/elastic-introduction.adoc[]
+
+
+
+

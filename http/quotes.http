@@ -1,0 +1,133 @@
+@elasticUrl http://localhost:9200
+
+{{
+    exports.acceptHeaders = {
+        text: {
+            'Accept': 'text/plain',
+        },
+        csv: {
+            'Accept': 'text/csv',
+        },
+        json: {
+            'Accept': 'application/json',
+        },
+        yaml: {
+            'Accept': 'application/yaml',
+        },
+    };
+}}
+
+{{+request
+    request.headers['Content-Type'] = 'application/json';
+}}
+
+### create an index for quotes
+PUT {{elasticUrl}}/quotes
+
+{
+    "mappings": {
+        "properties": {
+            "content": {
+                "type": "text"
+            },
+            "author": {
+                "type": "text"
+            },
+            "tags": {
+                "type": "keyword"
+            },
+            "authorSlug": {
+                "type": "keyword"
+            },
+            "dateAdded": {
+                "type": "date"
+            }
+        }
+    }
+}
+
+### create new quote
+POST {{elasticUrl}}/quotes/_doc/1
+
+{
+    "content": "True friendship can afford true knowledge. It does not depend on darkness and ignorance.",
+    "author": "Henry David Thoreau",
+    "tags": [
+        "friendship"
+    ],
+    "authorSlug": "henry-david-thoreau",
+    "dateAdded": "2020-12-17"
+}
+
+### retrieve just-created quote
+GET {{elasticUrl}}/quotes/_doc/1
+
+### upload a lot of quotes
+POST {{elasticUrl}}/quotes/_bulk
+
+< ./data/quotes.ndjson
+
+### search quotes by author
+POST {{elasticUrl}}/quotes/_search
+
+{
+    "query": {
+        "match": {
+            "author": "john"
+        }
+    }
+}
+
+### search quotes by author fuzzily
+POST {{elasticUrl}}/quotes/_search
+
+{
+    "query": {
+        "fuzzy": {
+            "author": "johm"
+        }
+    }
+}
+
+
+### search quotes by tags
+POST {{elasticUrl}}/quotes/_search
+
+{
+    "query": {
+        "match": {
+            "tags": "technology"
+        }
+    }
+}
+
+### use EQL to search quotes by author
+POST {{elasticUrl}}/quotes/
+
+### use SQL to search quotes by author (supported multiple response formarts)
+POST {{elasticUrl}}/_sql
+
+{
+    "query": "SELECT content, author FROM quotes WHERE authorSlug LIKE 'john%'"
+}
+
+### use SQL to search quotes by added date with parameter-passing support
+POST {{elasticUrl}}/_sql
+
+{
+    "query": "SELECT content, author, dateAdded FROM quotes WHERE dateAdded > ? LIMIT 3",
+    "params": ["2022-06-01"]
+}
+
+### use SQL to search quotes with post script mapping
+POST {{elasticUrl}}/_sql
+
+{
+    "runtime_mappings": {
+        "date": {
+            "type": "keyword",
+            "script": "emit(doc['dateAdded'].value.toString())"
+        }
+    },
+    "query": "SELECT content, author, dateAdded, date FROM quotes"
+}

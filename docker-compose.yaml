@@ -1,0 +1,22 @@
+version: '3.5'
+services:
+  elastic:
+    container_name: tuanelastic
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.1
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+    volumes:
+      - ~/data/elastic:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.enrollment.enabled=true
+      - network.host=0.0.0.0
+      - ES_JAVA_OPTS="-Xms1g -Xmx1g"
+
+networks:
+  elastic:
+    name: elastic
+    driver: bridge
