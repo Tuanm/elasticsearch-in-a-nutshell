@@ -4,7 +4,6 @@ const fs = require('fs');
 const log = require('./log');
 
 /* Fecthes quotes and saves into file. */ {
-    const action = '{\"create\":{}}\n'; // used for Elasticsearch's bulking
     const url = 'https://api.quotable.io/random';
     const file = 'http/data/quotes.ndjson';
     const total = Number(process.argv[2]) || 0;
@@ -25,16 +24,27 @@ const log = require('./log');
 
     Promise.all(requests).then((responses) => {
         const quotes = responses.map((response) => {
-            const { content, author, tags, authorSlug, dateAdded } = response || {};
-            return JSON.stringify({
+            const { _id: id, content, author, tags, authorSlug, dateAdded } = response || {};
+            return {
+                id,
                 content,
                 author,
                 tags,
                 authorSlug,
                 dateAdded,
-            });
+            };
         });
-        const bulk = action + quotes.join(`\n${action}`) + '\n' /* as NDJSON */;
+
+        const metadata = (id) => `{\"create\":{\"_id\":\"${id}\"}}`;
+        const source = (quote = {}) => JSON.stringify({
+            ...quote,
+            id: undefined, // this field is omitted
+        });
+
+        const bulk = quotes.reduce((acc, quote) => {
+            return acc.concat(`${metadata(quote.id)}\n${source(quote)}\n`);
+        }, '') /* as NDJSON */;
+
         fs.writeFileSync(file, bulk);
         log(`\r${total} quote${total > 1 ? 's' : ''} saved into ${file} successfully.\n`);
     });
