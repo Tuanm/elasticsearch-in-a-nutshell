@@ -1,0 +1,72 @@
+== Elastic comes in...
+
+=== A brief of ElasticSearch
+
+[%step]
+- an open-source, distributed search engine built on top of *Apache Lucene*
+[%step]
+- index large amounts of data, support full-text searches and real-time statistics
+[%step]
+- support searching relevance tuning and suggestions
+
+=== Physical layout
+WIP
+
+[%step]
+- clusters
+[%step]
+- nodes
+[%step]
+- shards
+[%step]
+- replicas
+
+=== Logical layout
+WIP
+
+[%step]
+- fields
+[%step]
+- documents
+[%step]
+- types
+[%step]
+- indices
+
+=== Let's move on...
+
+=== Indexing
+WIP
+
+[%step]
+- create a mapping
+[%step]
+- interact with data
+
+=== Searching
+WIP
+
+[%step]
+- use Query DSL
+[%step]
+- use EQL
+[%step]
+- use SQL
+
+=== Still searching
+WIP
+
+[%step]
+- search with relevancy
+[%step]
+- use aggregation
+
+=== Beyond searching...
+WIP
+
+[%step]
+- scale out
+[%step]
+- improve performance
+[%step]
+- monitor

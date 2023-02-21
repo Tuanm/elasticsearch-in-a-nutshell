@@ -1,0 +1,12 @@
+:elastic-guide: https://www.elastic.co/guide/index.html[Elastic Guide (8.6)]
+:elasticsearch-in-action: https://www.manning.com/books/elasticsearch-in-action-second-edition[ElasticSearch in Action (2nd)]
+
+== Whoops! It's the last slide.
+Thanks for going to the end of the story.
+
+=== My story is inspired from...
+
+[%step]
+- *{elastic-guide}* of _elastic_
+[%step]
+- *{elasticsearch-in-action}* of _R. M. R_

@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "feq": "node scripts/fetch-quotes.js 69",
-    "doc": "node scripts/export-doc.js README.adoc"
+    "data": "node scripts/prepare-data.js 69",
+    "docs": "node scripts/export-adoc-to-html.js README.adoc",
+    "slides": "node scripts/export-adoc-to-html.js slides.adoc ."
   },
   "dependencies": {
     "@asciidoctor/reveal.js": "^5.0.0-rc.1",

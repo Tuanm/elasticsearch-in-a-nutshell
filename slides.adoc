@@ -1,0 +1,14 @@
+= ElasticSearch in a nutshell
+:author: Tuan Do
+:docdate: 2023-02-22
+:revealjs_theme: serif
+:source-highlighter: highlightjs
+
+
+include::docs/story.adoc[]
+
+include::docs/system.adoc[]
+
+include::docs/elastic.adoc[]
+
+include::docs/reference.adoc[]

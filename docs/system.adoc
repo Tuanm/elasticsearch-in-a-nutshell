@@ -1,0 +1,50 @@
+== A simple quote-sharing land
+
+=== For what?
+
+[%step]
+- for personal purposes
+[%step]
+- a place for *exploring* the sayings, excerpts that going viral or belonging to an influencer, a reputational person, a well-known character ~ *famous quotes*
+[%step]
+- allow everyone to *share* their quotes
+
+=== How it looks...
+> "*Working is the only way to fill up one's stomach.*" - Hu-an Rosé
+
+=== ... as code
+[source,json,linenums,highlight='2|3|4|5..8|9|10|1..11']
+--
+{
+    "id": "69z",
+    "content": "Working is the only way to fill up one's stomach.",
+    "author": "Hu-an Rosé",
+    "tags": [
+        "truism",
+        "motivation"
+    ],
+    "dateAdded": "2018-06-09",
+    "authorSlug": "huan-rose"
+}
+--
+
+=== RDBMS - an old friend
+
+=== Schema
+image::images/system/schema.png[height=400]
+
+=== Pretty good but...
+
+=== ... not the best
+
+[%step]
+- user-shared quotes increase every single day
+[%step]
+- a simple search takes too much time sometimes
+[%step]
+- users have to remember an exact word in their desired quote
+[%step]
+- and many negligible problems
+
+=== The savior
+image::images/system/savior.png[]

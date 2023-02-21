@@ -8,6 +8,7 @@ const log = require('./log');
 
 /* Uses Reveal.js API to convert Asciidoc file to HTML */ {
     const adocFile = process.argv[2] || '';
+    const distDir = process.argv[3] || 'dist';
     if (!!adocFile) {
         revealjs.register();
         const options = {
@@ -17,7 +18,7 @@ const log = require('./log');
         asciidoctor.convertFile(adocFile, options);
         const dirname = process.cwd();
         const toFile = adocFile.replace(/\.(adoc|asciidoc)$/g, '.html');
-        const distPath = path.join(dirname, 'dist', toFile);
+        const distPath = path.join(dirname, distDir, toFile);
         fs.rename(
             path.join(dirname, toFile),
             distPath,

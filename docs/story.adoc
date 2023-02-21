@@ -1,0 +1,34 @@
+== Before we go...
+
+=== ... let me tell you a story.
+
+=== Once upon a time...
+
+=== There was...
+image::images/story/01.png[]
+
+=== ... a readaholic.
+image::images/story/02.png[]
+
+=== He did love sharing...
+image::images/story/03.png[]
+
+=== ... and learning new meaningful things.
+image::images/story/04.png[]
+
+=== And?
+
+=== One day, he wondered...
+image::images/story/05.png[]
+
+how far?
+how often?
+how many?
+
+*how...?*
+
+=== So he decided to...
+
+image::images/story/06.png[]
+
+design and construct an information system.
